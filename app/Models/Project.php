@@ -13,4 +13,17 @@ class Project extends Model
     {
         return $this->hasMany(Task::class);
     }
+    /**
+     * Get the createdBy that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
 }
